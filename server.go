@@ -4,10 +4,10 @@ import (
 	"gopkg.in/gin-gonic/gin.v1"
 	"github.com/fvbock/endless"
 	controller "gin-demo/controller"
+	router "gin-demo/router"
 )
 
 func main() {
-	router := gin.Default()
-	router.GET("/", controller.IndexGET)
-	endless.ListenAndServe(":8000", router)
+	handler := router.Init()
+	endless.ListenAndServe(":8000", handler)
 }
