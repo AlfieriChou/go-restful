@@ -1,16 +1,16 @@
 package database
 
 import (
-  "github.com/jinzhu/gorm"
-  _ "github.com/jinzhu/gorm/dialects/mysql"
+  _ "github.com/go-sql-driver/mysql"
+  "github.com/go-xorm/xorm"
+  "log"
 )
-
-var db gorm.DB
-
-func Database() {
-    db, err := gorm.Open("mysql", "root:@tcp(127.0.0.1:3306)/test")
-    if err != nil {
-      panic("failed to connect database")
-    }
-    defer db.Close()
+var Orm *xorm.Engine
+func init() {
+  var err error
+  Orm, err = xorm.NewEngine("mysql", "root:@tcp(127.0.0.1:3306)/test?charset=utf8")
+  Orm.ShowSQL(true)
+  if err != nil {
+    log.Fatal(err.Error())
+  }
 }

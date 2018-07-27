@@ -1,10 +1,8 @@
 package main
 
 import (
-	"gopkg.in/gin-gonic/gin.v1"
 	"github.com/fvbock/endless"
-	controller "gin-demo/controller"
-	router "gin-demo/router"
+	router "go-restful/router"
 )
 
 func main() {
